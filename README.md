@@ -1,4 +1,4 @@
-# OrçaWeb (ou o nome que você escolher)
+# OrçaWeb 
 
 Um sistema simples para geração de **orçamentos de serviços contábeis**.  
 Desenvolvido em **HTML, CSS e JavaScript**, o projeto permite preencher os dados em um formulário interativo e gerar automaticamente um orçamento pronto para impressão ou exportação em PDF.
