@@ -1,2 +1,20 @@
-# ContabForm
-Um gerador de orçamentos de serviços contábeis em HTML. Permite preencher os dados em um formulário, visualizar o orçamento no navegador e imprimir ou salvar como PDF, de forma simples e rápida.
+# OrçaWeb (ou o nome que você escolher)
+
+Um sistema simples para geração de **orçamentos de serviços contábeis**.  
+Desenvolvido em **HTML, CSS e JavaScript**, o projeto permite preencher os dados em um formulário interativo e gerar automaticamente um orçamento pronto para impressão ou exportação em PDF.
+
+## 🚀 Funcionalidades
+- Formulário para preenchimento dos dados do orçamento
+- Visualização direta no navegador
+- Geração de orçamento em PDF via impressão
+- Layout profissional e adaptável
+- Fácil manutenção e personalização
+
+## 🛠️ Tecnologias utilizadas
+- HTML5
+- CSS3
+- JavaScript
+
+## 📦 Como usar
+1. Clone este repositório:
+   ```bash
