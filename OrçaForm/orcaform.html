@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orçamento - Vasconcelos Contabilidade</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background: #fff;
+    }
+    .orcamento {
+      border: 1px solid #ccc;
+      padding: 20px 40px;
+      max-width: 210mm; 
+      width: 100%;
+      margin: auto;
+      background: white;
+      box-sizing: border-box;
+    }
+    
+    
+    @media print {
+      @page {
+        size: A4;
+        margin: 15mm;
+      }
+      
+      body {
+        margin: 0;
+        background: white;
+      }
+      
+      .orcamento {
+        max-width: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        background: white !important;
+      }
+      
+      
+      div.orcamento,
+      .orcamento,
+      #orcamento {
+        border: 1px solid #ccc !important;
+        border-width: 1px !important;
+        border-style: solid !important;
+        border-color: #ccc !important;
+      }
+      
+      .actions {
+        display: none !important;
+      }
+      
+     
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      
+      
+      .popup, .overlay {
+        display: none !important;
+      }
+      
+      
+      .empresa h2 {
+        font-size: 16px !important;
+      }
+      
+      .empresa p {
+        font-size: 12px !important;
+      }
+      
+      .secao-content {
+        font-size: 13px !important;
+      }
+      
+      .descricao {
+        font-size: 13px !important;
+      }
+      
+      th, td {
+        font-size: 13px !important;
+        padding: 6px !important;
+      }
+      
+      .totais {
+        font-size: 15px !important;
+      }
+      
+      
+      .secao {
+        border: 1px solid #0b1c3c !important;
+      }
+      
+      .secao-header {
+        background: #0b1c3c !important;
+        border: none !important;
+      }
+      
+      table, th, td {
+        border: 1px solid #333 !important;
+      }
+      
+      .totais {
+        border-top: 2px solid #0b1c3c !important;
+      }
+      
+      
+      * {
+        box-shadow: none !important;
+      }
+    }
+    .topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .empresa {
+      max-width: 60%;
+    }
+    .empresa h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #0b1c3c;
+    }
+    .empresa p {
+      margin: 2px 0;
+      font-size: 14px;
+    }
+    .logo {
+      text-align: right;
+    }
+    .logo img {
+      width: 100px;
+    }
+    .logo p {
+      font-size: 14px;
+      margin: 2px 0;
+    }
+    .secao {
+      margin-top: 25px;
+      border: 1px solid #0b1c3c;
+    }
+    .secao-header {
+      background: #0b1c3c;
+      color: white;
+      padding: 8px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+    }
+    .secao-content {
+      padding: 12px;
+      font-size: 15px;
+    }
+    .descricao {
+      margin: 25px 0;
+      font-size: 15px;
+      text-align: justify;
+      line-height: 1.5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: left;
+      font-size: 15px;
+    }
+    th {
+      background: #0b1c3c;
+      color: white;
+      font-weight: bold;
+    }
+    .totais {
+      margin-top: 20px;
+      border-top: 2px solid #0b1c3c;
+      padding-top: 15px;
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0b1c3c;
+    }
+    .actions {
+      margin: 20px;
+      text-align: center;
+    }
+    .actions button {
+      padding: 8px 15px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    
+    .popup, .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .popup {
+      z-index: 1000;
+      width: 450px;
+      background: #fff;
+      border: 2px solid #0b1c3c;
+      border-radius: 8px;
+      padding: 25px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .popup h3 {
+      margin-top: 0;
+      color: #0b1c3c;
+    }
+    .popup .campo {
+      margin: 10px 0;
+    }
+    .popup label {
+      display: block;
+      margin-bottom: 3px;
+      font-weight: bold;
+      color: #0b1c3c;
+      font-size: 14px;
+    }
+    .popup input {
+      width: 100%;
+      margin: 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .popup input:focus {
+      border-color: #0b1c3c;
+      outline: none;
+    }
+    .popup .botoes {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .popup button {
+      margin: 5px 8px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .popup .btn-aplicar {
+      background: #0b1c3c;
+      color: white;
+    }
+    .popup .btn-aplicar:hover {
+      background: #1a2a4a;
+    }
+    .popup .btn-sucesso {
+      background: #28a745;
+      color: white;
+    }
+    .popup .btn-sucesso:hover {
+      background: #218838;
+    }
+    .popup .btn-cancelar {
+      background: #ccc;
+      color: #333;
+    }
+    .popup .btn-cancelar:hover {
+      background: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+<div class="orcamento" id="orcamento">
+  <div class="topo">
+    <div class="empresa">
+      <p><b id="dataEmissao">--/--/----</b></p>
+      <h2>Vasconcelos Contabilidade</h2>
+      <p>AV MOISES MOITA, 1100 - ANDAR 2 - Tianguá - CE</p>
+      <p>CEP: 62327-330</p>
+      <p>F T VASCONCELOS LTDA</p>
+      <p>CNPJ: 45879564000184</p>
+    </div>
+    <div class="logo">
+      <p><b>Orçamento:</b></p>
+      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.instagram.com%2Fvascontab%2F&psig=AOvVaw0pCvVFolVZqYOnoXf0chmO&ust=1757438132040000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPi85bDVyY8DFQAAAAAdAAAAABAE" alt="Logo">
+      <p>(88) 99656-0023</p>
+      <p>contato@vascontce.com.br</p>
+    </div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-header">
+      <span>Cliente</span>
+      <span>Datas</span>
+    </div>
+    <div class="secao-content" style="display:flex;justify-content:space-between;">
+      <div><b id="cliente">--</b></div>
+      <div>
+        <p>Validade da proposta: <span id="validade">--/--/----</span></p>
+        <p>Previsão de entrega: <span id="entrega">--/--/----</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="descricao">
+    A Vasconcelos Contabilidade se compromete a prestar serviços contábeis com excelência,
+    priorizando a segurança, a agilidade e a precisão em todas as etapas do atendimento.
+    Nosso foco é gerar resultados concretos e estratégicos para o seu negócio, atuando com
+    ética, transparência e dedicação.<br><br>
+    Trabalhamos para oferecer soluções personalizadas que promovam crescimento sustentável
+    e tranquilidade aos nossos clientes, sempre com responsabilidade e compromisso com a
+    qualidade.<br><br>
+    Seja bem-vindo(a) a Vasconcelos Contabilidade!
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Qt.</th>
+        <th>Produto/Serviço</th>
+        <th>Valor unitário</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody id="produtos">
+      <tr>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totais">
+    Total: R$ <span id="total">0,00</span>
+  </div>
+</div>
+
+<div class="actions">
+  <button onclick="abrirPopup()">Preencher Formulário</button>
+  <button onclick="limparFormulario()">Limpar</button>
+  <button onclick="imprimirOrcamento()">Imprimir</button>
+</div>
+
+
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+  <h3 id="tituloPopup">Preencher Orçamento</h3>
+  
+  <div class="campo">
+    <label for="inputCliente">Nome do Cliente:</label>
+    <input type="text" id="inputCliente" placeholder="Digite o nome do cliente">
+  </div>
+  
+  <div class="campo">
+    <label for="inputDataEmissao">Data de Emissão:</label>
+    <input type="date" id="inputDataEmissao">
+  </div>
+  
+  <div class="campo">
+    <label for="inputValidade">Validade da Proposta:</label>
+    <input type="date" id="inputValidade">
+  </div>
+  
+  <div class="campo">
+    <label for="inputEntrega">Previsão de Entrega:</label>
+    <input type="date" id="inputEntrega">
+  </div>
+  
+  <div class="campo">
+    <label for="inputProduto">Produto/Serviço:</label>
+    <input type="text" id="inputProduto" placeholder="Descreva o produto ou serviço">
+  </div>
+  
+  <div class="campo">
+    <label for="inputQuantidade">Quantidade:</label>
+    <input type="number" id="inputQuantidade" placeholder="Ex: 1" min="1">
+  </div>
+  
+  <div class="campo">
+    <label for="inputValorUnitario">Valor Unitário (R$):</label>
+    <input type="number" id="inputValorUnitario" placeholder="Ex: 1100.00" step="0.01" min="0">
+  </div>
+  
+  <div class="botoes">
+    <button class="btn-aplicar" onclick="adicionarProduto()">Adicionar Produto</button>
+    <button class="btn-aplicar" onclick="finalizarOrcamento()" style="background: #28a745;">Finalizar Orçamento</button>
+    <button class="btn-cancelar" onclick="fecharPopup()">Cancelar</button>
+  </div>
+</div>
+
+<script>
+let produtos = []; 
+let dadosGerais = {}; 
+
+function abrirPopup() {
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
+}
+
+function fecharPopup() {
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
+  limparCamposPopup();
+}
+
+function limparCamposPopup() {
+  document.getElementById("inputCliente").value = "";
+  document.getElementById("inputDataEmissao").value = "";
+  document.getElementById("inputValidade").value = "";
+  document.getElementById("inputEntrega").value = "";
+  document.getElementById("inputProduto").value = "";
+  document.getElementById("inputQuantidade").value = "";
+  document.getElementById("inputValorUnitario").value = "";
+}
+
+function adicionarProduto() {
+  const cliente = document.getElementById("inputCliente").value;
+  const dataEmissao = document.getElementById("inputDataEmissao").value;
+  const validade = document.getElementById("inputValidade").value;
+  const entrega = document.getElementById("inputEntrega").value;
+  const produto = document.getElementById("inputProduto").value;
+  const quantidade = parseInt(document.getElementById("inputQuantidade").value) || 0;
+  const valorUnitario = parseFloat(document.getElementById("inputValorUnitario").value) || 0;
+
+
+  if (cliente) dadosGerais.cliente = cliente;
+  if (dataEmissao) dadosGerais.dataEmissao = dataEmissao;
+  if (validade) dadosGerais.validade = validade;
+  if (entrega) dadosGerais.entrega = entrega;
+
+ 
+  if (!produto || quantidade <= 0 || valorUnitario <= 0) {
+    alert("Por favor, preencha todos os campos do produto corretamente.");
+    return;
+  }
+
+
+  const subtotal = quantidade * valorUnitario;
+  produtos.push({
+    produto: produto,
+    quantidade: quantidade,
+    valorUnitario: valorUnitario,
+    subtotal: subtotal
+  });
+
+  
+  document.getElementById("inputProduto").value = "";
+  document.getElementById("inputQuantidade").value = "";
+  document.getElementById("inputValorUnitario").value = "";
+
+ 
+  atualizarTabela();
+  
+  
+  document.getElementById("tituloPopup").textContent = `Preencher Orçamento (${produtos.length} produto${produtos.length > 1 ? 's' : ''} adicionado${produtos.length > 1 ? 's' : ''})`;
+  
+  alert(`Produto "${produto}" adicionado! Total de produtos: ${produtos.length}`);
+}
+
+function finalizarOrcamento() {
+  if (produtos.length === 0) {
+    alert("Adicione pelo menos um produto antes de finalizar.");
+    return;
+  }
+
+  
+  if (dadosGerais.cliente) document.getElementById("cliente").textContent = dadosGerais.cliente;
+  if (dadosGerais.dataEmissao) document.getElementById("dataEmissao").textContent = dadosGerais.dataEmissao.split("-").reverse().join("/");
+  if (dadosGerais.validade) document.getElementById("validade").textContent = dadosGerais.validade.split("-").reverse().join("/");
+  if (dadosGerais.entrega) document.getElementById("entrega").textContent = dadosGerais.entrega.split("-").reverse().join("/");
+
+  atualizarTabela();
+  fecharPopup();
+  
+  alert("Orçamento finalizado com sucesso!");
+}
+
+function atualizarTabela() {
+  const tabela = document.getElementById("produtos");
+  let html = "";
+  let totalGeral = 0;
+
+  produtos.forEach(item => {
+    html += `
+      <tr>
+        <td>${item.quantidade}</td>
+        <td>${item.produto}</td>
+        <td>R$ ${item.valorUnitario.toFixed(2).replace(".", ",")}</td>
+        <td>R$ ${item.subtotal.toFixed(2).replace(".", ",")}</td>
+      </tr>
+    `;
+    totalGeral += item.subtotal;
+  });
+
+  tabela.innerHTML = html;
+  document.getElementById("total").textContent = totalGeral.toFixed(2).replace(".", ",");
+}
+
+function limparFormulario() {
+  produtos = [];
+  dadosGerais = {};
+  
+  document.getElementById("cliente").textContent = "--";
+  document.getElementById("dataEmissao").textContent = "--/--/----";
+  document.getElementById("validade").textContent = "--/--/----";
+  document.getElementById("entrega").textContent = "--/--/----";
+  document.getElementById("produtos").innerHTML = `
+    <tr>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+  `;
+  document.getElementById("total").textContent = "0,00";
+  
+  limparCamposPopup();
+}
+
+function imprimirOrcamento() {
+  const actions = document.querySelector('.actions');
+  const originalDisplay = actions.style.display;
+  actions.style.display = 'none';
+  
+  const originalTitle = document.title;
+  document.title = 'Orçamento - Vasconcelos Contabilidade';
+  
+  window.print();
+  
+  setTimeout(() => {
+    actions.style.display = originalDisplay;
+    document.title = originalTitle;
+  }, 100);
+}
+</script>
+
+</body>
+</html>
