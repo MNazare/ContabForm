@@ -118,11 +118,15 @@
       }
     }
     .topo {
+      margin-bottom: 20px;
+      border-bottom: 2px solid #0b1c3c;
+      padding-bottom: 15px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
     .empresa {
+      
       max-width: 60%;
     }
     .empresa h2 {
@@ -284,23 +288,35 @@
     .popup .btn-cancelar:hover {
       background: #bbb;
     }
+    .alto {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #0b1c3c;
+      padding-bottom: 5px;
+    }
   </style>
 </head>
 <body>
 
 <div class="orcamento" id="orcamento">
+  <div class="alto">
+    <p><b id="dataEmissao">--/--/----</b></p>
+      <p><b>Orçamento:</b></p>
+      </div>
   <div class="topo">
     <div class="empresa">
-      <p><b id="dataEmissao">--/--/----</b></p>
+      
       <h2>Vasconcelos Contabilidade</h2>
       <p>AV MOISES MOITA, 1100 - ANDAR 2 - Tianguá - CE</p>
       <p>CEP: 62327-330</p>
       <p>F T VASCONCELOS LTDA</p>
-      <p>CNPJ: 45879564000184</p>
+      <p>CNPJ: 45.879.564/0001-84</p>
     </div>
     <div class="logo">
-      <p><b>Orçamento:</b></p>
-      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.instagram.com%2Fvascontab%2F&psig=AOvVaw0pCvVFolVZqYOnoXf0chmO&ust=1757438132040000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPi85bDVyY8DFQAAAAAdAAAAABAE" alt="Logo">
+      
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-ONLbRg7oYy0lNifhbBYis6KnXnZuiQr1Yg&s" alt="Logo">
       <p>(88) 99656-0023</p>
       <p>contato@vascontce.com.br</p>
     </div>
@@ -372,11 +388,6 @@
   </div>
   
   <div class="campo">
-    <label for="inputDataEmissao">Data de Emissão:</label>
-    <input type="date" id="inputDataEmissao">
-  </div>
-  
-  <div class="campo">
     <label for="inputValidade">Validade da Proposta:</label>
     <input type="date" id="inputValidade">
   </div>
@@ -408,6 +419,7 @@
   </div>
 </div>
 
+
 <script>
 let produtos = []; 
 let dadosGerais = {}; 
@@ -415,6 +427,12 @@ let dadosGerais = {};
 function abrirPopup() {
   document.getElementById("popup").style.display = "block";
   document.getElementById("overlay").style.display = "block";
+  
+  const hoje = new Date();
+  const dia = String(hoje.getDate()).padStart(2, '0');
+  const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+  const ano = hoje.getFullYear();
+  dadosGerais.dataEmissao = `${dia}/${mes}/${ano}`;
 }
 
 function fecharPopup() {
@@ -425,7 +443,6 @@ function fecharPopup() {
 
 function limparCamposPopup() {
   document.getElementById("inputCliente").value = "";
-  document.getElementById("inputDataEmissao").value = "";
   document.getElementById("inputValidade").value = "";
   document.getElementById("inputEntrega").value = "";
   document.getElementById("inputProduto").value = "";
@@ -435,25 +452,20 @@ function limparCamposPopup() {
 
 function adicionarProduto() {
   const cliente = document.getElementById("inputCliente").value;
-  const dataEmissao = document.getElementById("inputDataEmissao").value;
   const validade = document.getElementById("inputValidade").value;
   const entrega = document.getElementById("inputEntrega").value;
   const produto = document.getElementById("inputProduto").value;
   const quantidade = parseInt(document.getElementById("inputQuantidade").value) || 0;
   const valorUnitario = parseFloat(document.getElementById("inputValorUnitario").value) || 0;
 
-
   if (cliente) dadosGerais.cliente = cliente;
-  if (dataEmissao) dadosGerais.dataEmissao = dataEmissao;
   if (validade) dadosGerais.validade = validade;
   if (entrega) dadosGerais.entrega = entrega;
 
- 
   if (!produto || quantidade <= 0 || valorUnitario <= 0) {
     alert("Por favor, preencha todos os campos do produto corretamente.");
     return;
   }
-
 
   const subtotal = quantidade * valorUnitario;
   produtos.push({
@@ -463,15 +475,12 @@ function adicionarProduto() {
     subtotal: subtotal
   });
 
-  
   document.getElementById("inputProduto").value = "";
   document.getElementById("inputQuantidade").value = "";
   document.getElementById("inputValorUnitario").value = "";
 
- 
   atualizarTabela();
-  
-  
+
   document.getElementById("tituloPopup").textContent = `Preencher Orçamento (${produtos.length} produto${produtos.length > 1 ? 's' : ''} adicionado${produtos.length > 1 ? 's' : ''})`;
   
   alert(`Produto "${produto}" adicionado! Total de produtos: ${produtos.length}`);
@@ -483,9 +492,8 @@ function finalizarOrcamento() {
     return;
   }
 
-  
   if (dadosGerais.cliente) document.getElementById("cliente").textContent = dadosGerais.cliente;
-  if (dadosGerais.dataEmissao) document.getElementById("dataEmissao").textContent = dadosGerais.dataEmissao.split("-").reverse().join("/");
+  if (dadosGerais.dataEmissao) document.getElementById("dataEmissao").textContent = dadosGerais.dataEmissao;
   if (dadosGerais.validade) document.getElementById("validade").textContent = dadosGerais.validade.split("-").reverse().join("/");
   if (dadosGerais.entrega) document.getElementById("entrega").textContent = dadosGerais.entrega.split("-").reverse().join("/");
 
@@ -553,6 +561,7 @@ function imprimirOrcamento() {
   }, 100);
 }
 </script>
+
 
 </body>
 </html>
