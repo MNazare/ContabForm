@@ -11,111 +11,30 @@
       background: #fff;
     }
     .orcamento {
-      
       padding: 20px 40px;
-      max-width: 210mm; 
+      max-width: 210mm;
       width: 100%;
       margin: auto;
       background: white;
       box-sizing: border-box;
     }
-    
-    
     @media print {
-      @page {
-        size: A4;
-        margin: 15mm;
-      }
-      
-      body {
-        margin: 0;
-        background: white;
-      }
-      
-      .orcamento {
-        max-width: none !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 20px !important;
-        
-        border: 1px solid #ccc !important;
-        box-shadow: none !important;
-        background: white !important;
-      }
-      
-      
-      div.orcamento,
-      .orcamento,
-      #orcamento {
-        border: 1px solid #ccc !important;
-        border-width: 1px !important;
-        border-style: solid !important;
-        border-color: #ccc !important;
-      }
-      
-      .actions {
-        display: none !important;
-      }
-      
-     
-      html {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      
-      
-      .popup, .overlay {
-        display: none !important;
-      }
-      
-      
-      .empresa h2 {
-        font-size: 16px !important;
-      }
-      
-      .empresa p {
-        font-size: 12px !important;
-      }
-      
-      .secao-content {
-        font-size: 13px !important;
-      }
-      
-      .descricao {
-        font-size: 13px !important;
-      }
-      
-      th, td {
-        font-size: 13px !important;
-        padding: 6px !important;
-      }
-      
-      .totais {
-        font-size: 15px !important;
-      }
-      
-      
-      .secao {
-        border: 1px solid #0b1c3c !important;
-      }
-      
-      .secao-header {
-        background: #0b1c3c !important;
-        border: none !important;
-      }
-      
-      table, th, td {
-        border: 1px solid #333 !important;
-      }
-      
-      .totais {
-        border-top: 2px solid #0b1c3c !important;
-      }
-      
-      
-      * {
-        box-shadow: none !important;
-      }
+      @page { size: A4; margin: 15mm; }
+      body { margin: 0; background: white; }
+      .orcamento { max-width: none !important; width: 100% !important; margin: 0 !important; padding: 20px !important; border: 1px solid #ccc !important; box-shadow: none !important; background: white !important; }
+      .actions { display: none !important; }
+      .popup, .overlay { display: none !important; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .empresa h2 { font-size: 16px !important; }
+      .empresa p { font-size: 12px !important; }
+      .secao-content { font-size: 13px !important; }
+      .descricao { font-size: 13px !important; }
+      th, td { font-size: 13px !important; padding: 6px !important; }
+      .totais { font-size: 15px !important; border-top: 2px solid #0b1c3c !important; }
+      .secao { border: 1px solid #0b1c3c !important; }
+      .secao-header { background: #0b1c3c !important; border: none !important; }
+      table, th, td { border: 1px solid #333 !important; }
+      * { box-shadow: none !important; }
     }
     .topo {
       margin-bottom: 20px;
@@ -125,102 +44,29 @@
       justify-content: space-between;
       align-items: flex-start;
     }
-    .empresa {
-      
-      max-width: 60%;
-    }
-    .empresa h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #0b1c3c;
-    }
-    .empresa p {
-      margin: 2px 0;
-      font-size: 14px;
-    }
-    .logo {
-      text-align: right;
-    }
-    .logo img {
-      width: 100px;
-    }
-    .logo p {
-      font-size: 14px;
-      margin: 2px 0;
-    }
-    .secao {
-      margin-top: 25px;
-      border: 1px solid #0b1c3c;
-    }
-    .secao-header {
-      background: #0b1c3c;
-      color: white;
-      padding: 8px;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      font-size: 15px;
-    }
-    .secao-content {
-      padding: 12px;
-      font-size: 15px;
-    }
-    .descricao {
-      margin: 25px 0;
-      font-size: 15px;
-      text-align: justify;
-      line-height: 1.5;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #333;
-      padding: 10px;
-      text-align: left;
-      font-size: 15px;
-    }
-    th {
-      background: #0b1c3c;
-      color: white;
-      font-weight: bold;
-    }
-    .totais {
-      margin-top: 20px;
-      border-top: 2px solid #0b1c3c;
-      padding-top: 15px;
-      text-align: right;
-      font-size: 18px;
-      font-weight: bold;
-      color: #0b1c3c;
-    }
-    .actions {
-      margin: 20px;
-      text-align: center;
-    }
-    .actions button {
-      padding: 8px 15px;
-      margin: 5px;
-      cursor: pointer;
-    }
-    
-    .popup, .overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-    }
-    .overlay {
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-    }
+    .empresa { max-width: 60%; }
+    .empresa h2 { margin: 0; font-size: 20px; color: #0b1c3c; }
+    .empresa p { margin: 2px 0; font-size: 14px; }
+    .logo { text-align: right; }
+    .logo img { width: 100px; }
+    .logo p { font-size: 14px; margin: 2px 0; }
+    .secao { margin-top: 25px; border: 1px solid #0b1c3c; }
+    .secao-header { background: #0b1c3c; color: white; padding: 8px; font-weight: bold; display: flex; justify-content: space-between; font-size: 15px; }
+    .secao-content { padding: 12px; font-size: 15px; }
+    .descricao { margin: 25px 0; font-size: 15px; text-align: justify; line-height: 1.5; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #333; padding: 10px; text-align: left; font-size: 15px; }
+    th { background: #0b1c3c; color: white; font-weight: bold; }
+    .totais { margin-top: 20px; border-top: 2px solid #0b1c3c; padding-top: 15px; text-align: right; font-size: 18px; font-weight: bold; color: #0b1c3c; }
+    .actions { margin: 20px; text-align: center; }
+    .actions button { padding: 8px 15px; margin: 5px; cursor: pointer; }
+    .popup, .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+    .overlay { background: rgba(0,0,0,0.5); z-index: 999; }
     .popup {
       z-index: 1000;
-      width: 450px;
-      background: #fff;
-      border: 2px solid #0b1c3c;
+      width: 400px;
+      height: 600px;
+      background: #fff;      
       border-radius: 8px;
       padding: 25px;
       top: 50%;
@@ -228,74 +74,16 @@
       transform: translate(-50%, -50%);
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    .popup h3 {
-      margin-top: 0;
-      color: #0b1c3c;
-    }
-    .popup .campo {
-      margin: 10px 0;
-    }
-    .popup label {
-      display: block;
-      margin-bottom: 3px;
-      font-weight: bold;
-      color: #0b1c3c;
-      font-size: 14px;
-    }
-    .popup input {
-      width: 100%;
-      margin: 0;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-    .popup input:focus {
-      border-color: #0b1c3c;
-      outline: none;
-    }
-    .popup .botoes {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .popup button {
-      margin: 5px 8px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .popup .btn-aplicar {
-      background: #0b1c3c;
-      color: white;
-    }
-    .popup .btn-aplicar:hover {
-      background: #1a2a4a;
-    }
-    .popup .btn-sucesso {
-      background: #28a745;
-      color: white;
-    }
-    .popup .btn-sucesso:hover {
-      background: #218838;
-    }
-    .popup .btn-cancelar {
-      background: #ccc;
-      color: #333;
-    }
-    .popup .btn-cancelar:hover {
-      background: #bbb;
-    }
-    .alto {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #0b1c3c;
-      padding-bottom: 5px;
-    }
+    .popup h3 { margin-top: 0; color: #0b1c3c; }
+    .popup .campo { margin: 10px 0; }
+    .popup label { display: block; margin-bottom: 3px; font-weight: bold; color: #0b1c3c; font-size: 14px; }
+    .popup input { width: 100%; margin: 0; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; box-sizing: border-box; }
+    .popup input:focus { border-color: #0b1c3c; outline: none; }
+    .popup .botoes { margin-top: 20px; text-align: center; }
+    .popup button { margin: 5px 8px; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    .popup .btn-aplicar { background: #0b1c3c; color: white; }
+    .popup .btn-cancelar { background: #ccc; color: #333; }
+    .alto { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #0b1c3c; padding-bottom: 5px; }
   </style>
 </head>
 <body>
@@ -303,11 +91,11 @@
 <div class="orcamento" id="orcamento">
   <div class="alto">
     <p><b id="dataEmissao">--/--/----</b></p>
-      <p><b>Orçamento:</b></p>
-      </div>
+    <p id="numeroOrcamento"><b>Orçamento:</b></p>
+  </div>
+
   <div class="topo">
     <div class="empresa">
-      
       <h2>Vasconcelos Contabilidade</h2>
       <p>AV MOISES MOITA, 1100 - ANDAR 2 - Tianguá - CE</p>
       <p>CEP: 62327-330</p>
@@ -315,7 +103,6 @@
       <p>CNPJ: 45.879.564/0001-84</p>
     </div>
     <div class="logo">
-      
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-ONLbRg7oYy0lNifhbBYis6KnXnZuiQr1Yg&s" alt="Logo">
       <p>(88) 99656-0023</p>
       <p>contato@vascontce.com.br</p>
@@ -377,41 +164,45 @@
   <button onclick="imprimirOrcamento()">Imprimir</button>
 </div>
 
-
 <div class="overlay" id="overlay"></div>
 <div class="popup" id="popup">
   <h3 id="tituloPopup">Preencher Orçamento</h3>
-  
+
+  <div class="campo">
+    <label for="inputNumeroOrcamento">Número do Orçamento:</label>
+    <input type="text" id="inputNumeroOrcamento" placeholder="Ex: 0001">
+  </div>
+
   <div class="campo">
     <label for="inputCliente">Nome do Cliente:</label>
     <input type="text" id="inputCliente" placeholder="Digite o nome do cliente">
   </div>
-  
+
   <div class="campo">
     <label for="inputValidade">Validade da Proposta:</label>
     <input type="date" id="inputValidade">
   </div>
-  
+
   <div class="campo">
     <label for="inputEntrega">Previsão de Entrega:</label>
     <input type="date" id="inputEntrega">
   </div>
-  
+
   <div class="campo">
     <label for="inputProduto">Produto/Serviço:</label>
     <input type="text" id="inputProduto" placeholder="Descreva o produto ou serviço">
   </div>
-  
+
   <div class="campo">
     <label for="inputQuantidade">Quantidade:</label>
     <input type="number" id="inputQuantidade" placeholder="Ex: 1" min="1">
   </div>
-  
+
   <div class="campo">
     <label for="inputValorUnitario">Valor Unitário (R$):</label>
     <input type="number" id="inputValorUnitario" placeholder="Ex: 1100.00" step="0.01" min="0">
   </div>
-  
+
   <div class="botoes">
     <button class="btn-aplicar" onclick="adicionarProduto()">Adicionar Produto</button>
     <button class="btn-aplicar" onclick="finalizarOrcamento()" style="background: #28a745;">Finalizar Orçamento</button>
@@ -419,15 +210,14 @@
   </div>
 </div>
 
-
 <script>
-let produtos = []; 
-let dadosGerais = {}; 
+let produtos = [];
+let dadosGerais = {};
 
 function abrirPopup() {
   document.getElementById("popup").style.display = "block";
   document.getElementById("overlay").style.display = "block";
-  
+
   const hoje = new Date();
   const dia = String(hoje.getDate()).padStart(2, '0');
   const mes = String(hoje.getMonth() + 1).padStart(2, '0');
@@ -442,12 +232,14 @@ function fecharPopup() {
 }
 
 function limparCamposPopup() {
+  document.getElementById("inputNumeroOrcamento").value = "";
   document.getElementById("inputCliente").value = "";
   document.getElementById("inputValidade").value = "";
   document.getElementById("inputEntrega").value = "";
   document.getElementById("inputProduto").value = "";
   document.getElementById("inputQuantidade").value = "";
   document.getElementById("inputValorUnitario").value = "";
+  document.getElementById("tituloPopup").textContent = "Preencher Orçamento";
 }
 
 function adicionarProduto() {
@@ -482,7 +274,7 @@ function adicionarProduto() {
   atualizarTabela();
 
   document.getElementById("tituloPopup").textContent = `Preencher Orçamento (${produtos.length} produto${produtos.length > 1 ? 's' : ''} adicionado${produtos.length > 1 ? 's' : ''})`;
-  
+
   alert(`Produto "${produto}" adicionado! Total de produtos: ${produtos.length}`);
 }
 
@@ -492,19 +284,41 @@ function finalizarOrcamento() {
     return;
   }
 
+  const numeroRaw = document.getElementById("inputNumeroOrcamento").value.trim();
+  if (!numeroRaw) {
+    alert("Digite o número do orçamento.");
+    return;
+  }
+  const numeroOrcamento = (/^\d+$/).test(numeroRaw) ? numeroRaw.padStart(4, '0') : numeroRaw;
+
   if (dadosGerais.cliente) document.getElementById("cliente").textContent = dadosGerais.cliente;
   if (dadosGerais.dataEmissao) document.getElementById("dataEmissao").textContent = dadosGerais.dataEmissao;
   if (dadosGerais.validade) document.getElementById("validade").textContent = dadosGerais.validade.split("-").reverse().join("/");
   if (dadosGerais.entrega) document.getElementById("entrega").textContent = dadosGerais.entrega.split("-").reverse().join("/");
 
+  document.getElementById("numeroOrcamento").innerHTML = `<b>Orçamento: ${numeroOrcamento}</b>`;
+
   atualizarTabela();
   fecharPopup();
-  
+
   alert("Orçamento finalizado com sucesso!");
 }
 
 function atualizarTabela() {
   const tabela = document.getElementById("produtos");
+  if (produtos.length === 0) {
+    tabela.innerHTML = `
+      <tr>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+    `;
+    document.getElementById("total").textContent = "0,00";
+    return;
+  }
+
   let html = "";
   let totalGeral = 0;
 
@@ -527,7 +341,7 @@ function atualizarTabela() {
 function limparFormulario() {
   produtos = [];
   dadosGerais = {};
-  
+
   document.getElementById("cliente").textContent = "--";
   document.getElementById("dataEmissao").textContent = "--/--/----";
   document.getElementById("validade").textContent = "--/--/----";
@@ -541,7 +355,7 @@ function limparFormulario() {
     </tr>
   `;
   document.getElementById("total").textContent = "0,00";
-  
+  document.getElementById("numeroOrcamento").innerHTML = "<b>Orçamento:</b>";
   limparCamposPopup();
 }
 
@@ -549,19 +363,18 @@ function imprimirOrcamento() {
   const actions = document.querySelector('.actions');
   const originalDisplay = actions.style.display;
   actions.style.display = 'none';
-  
+
   const originalTitle = document.title;
   document.title = 'Orçamento - Vasconcelos Contabilidade';
-  
+
   window.print();
-  
+
   setTimeout(() => {
     actions.style.display = originalDisplay;
     document.title = originalTitle;
   }, 100);
 }
 </script>
-
 
 </body>
 </html>
